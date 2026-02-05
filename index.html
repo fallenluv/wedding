@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>창현 ♥ 나영 결혼합니다</title>
+
+    <!-- Kakao SDK -->
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.6.0/kakao.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --wood-dark: #5D4037;
+            --wood-medium: #8D6E63;
+            --wood-light: #D7CCC8;
+            --wood-cream: #EFEBE9;
+            --wood-bg: #FAF8F5;
+            --text-dark: #3E2723;
+            --text-medium: #5D4037;
+            --accent-gold: #C9A86C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif KR', serif;
+            background-color: var(--wood-bg);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #fff;
+            min-height: 100vh;
+            box-shadow: 0 0 30px rgba(93, 64, 55, 0.1);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(180deg, var(--wood-cream) 0%, #fff 100%);
+            padding: 60px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        .header-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: var(--wood-medium);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .header-title {
+            font-size: 28px;
+            font-weight: 300;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            letter-spacing: 8px;
+        }
+
+        .header-names-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            color: var(--wood-medium);
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        /* Main Photo Section */
+        .main-photo {
+            width: 100%;
+            padding: 0 30px;
+        }
+
+        .photo-frame {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--wood-light);
+            border: 8px solid var(--wood-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--wood-medium);
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-placeholder {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .photo-placeholder-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            padding: 50px 30px;
+            text-align: center;
+            background: #fff;
+        }
+
+        .quote-text {
+            font-size: 15px;
+            font-weight: 300;
+            color: var(--text-medium);
+            line-height: 2;
+            word-break: keep-all;
+        }
+
+        .quote-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--accent-gold);
+            margin: 30px auto;
+        }
+
+        /* Couple Section */
+        .couple-section {
+            padding: 50px 30px;
+            background: var(--wood-cream);
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: var(--wood-medium);
+            margin-bottom: 30px;
+        }
+
+        .couple-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .person {
+            text-align: center;
+        }
+
+        .person-role {
+            font-size: 12px;
+            color: var(--wood-medium);
+            margin-bottom: 8px;
+        }
+
+        .person-name {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .person-name-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12px;
+            color: var(--wood-medium);
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .couple-and {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            padding: 50px 30px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .wedding-date {
+            font-size: 14px;
+            color: var(--wood-medium);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .wedding-date-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        .wedding-time {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-top: 10px;
+        }
+
+        .calendar {
+            margin-top: 30px;
+            display: inline-block;
+        }
+
+        .calendar-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .calendar-header span {
+            font-size: 11px;
+            color: var(--wood-medium);
+            padding: 5px;
+        }
+
+        .calendar-header span:first-child {
+            color: #C62828;
+        }
+
+        .calendar-header span:last-child {
+            color: #1565C0;
+        }
+
+        .calendar-body {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            color: var(--text-medium);
+        }
+
+        .calendar-day.sunday {
+            color: #C62828;
+        }
+
+        .calendar-day.saturday {
+            color: #1565C0;
+        }
+
+        .calendar-day.wedding-day {
+            background: var(--wood-dark);
+            color: #fff;
+            border-radius: 50%;
+            font-weight: 500;
+        }
+
+        .calendar-day.empty {
+            visibility: hidden;
+        }
+
+        /* D-Day Counter */
+        .dday-counter {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--wood-cream);
+            border-radius: 10px;
+        }
+
+        .dday-text {
+            font-size: 14px;
+            color: var(--wood-medium);
+        }
+
+        .dday-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            color: var(--wood-dark);
+            font-weight: 500;
+        }
+
+        /* Location Section */
+        .location-section {
+            padding: 50px 30px;
+            background: var(--wood-cream);
+            text-align: center;
+        }
+
+        .location-name {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .location-floor {
+            font-size: 14px;
+            color: var(--wood-medium);
+            margin-bottom: 15px;
+        }
+
+        .location-address {
+            font-size: 13px;
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 250px;
+            background: var(--wood-light);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .location-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .location-btn {
+            padding: 12px 20px;
+            background: var(--wood-dark);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 13px;
+            font-family: 'Noto Serif KR', serif;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .location-btn:hover {
+            background: var(--text-dark);
+        }
+
+        /* Account Section */
+        .account-section {
+            padding: 50px 30px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .account-message {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 2;
+            margin-bottom: 30px;
+            word-break: keep-all;
+        }
+
+        .account-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .account-tab {
+            padding: 10px 25px;
+            background: var(--wood-cream);
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-family: 'Noto Serif KR', serif;
+            color: var(--text-medium);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .account-tab.active {
+            background: var(--wood-dark);
+            color: #fff;
+        }
+
+        .account-content {
+            display: none;
+            padding: 20px;
+            background: var(--wood-cream);
+            border-radius: 10px;
+        }
+
+        .account-content.active {
+            display: block;
+        }
+
+        .account-item {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--wood-light);
+        }
+
+        .account-item:last-child {
+            border-bottom: none;
+        }
+
+        .account-name {
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .account-number {
+            font-size: 13px;
+            color: var(--text-medium);
+            margin-bottom: 10px;
+        }
+
+        .copy-btn {
+            padding: 8px 16px;
+            background: var(--wood-dark);
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'Noto Serif KR', serif;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 50px 30px;
+            background: var(--wood-cream);
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: var(--wood-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: var(--wood-medium);
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Share Section */
+        .share-section {
+            padding: 50px 30px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .share-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .share-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .share-btn.kakao {
+            background: #FEE500;
+            color: #3C1E1E;
+        }
+
+        .share-btn.link {
+            background: var(--wood-dark);
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 30px;
+            background: var(--wood-dark);
+            text-align: center;
+            color: var(--wood-light);
+        }
+
+        .footer-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .footer-date {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Toast Message */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--wood-dark);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 14px;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header fade-in">
+            <p class="header-subtitle">WEDDING INVITATION</p>
+            <h1 class="header-title">창현 ♥ 나영</h1>
+            <p class="header-names-en">David Kim & Nguyen Thi Thuy Ngan</p>
+        </header>
+
+        <!-- Main Photo -->
+        <section class="main-photo fade-in">
+            <div class="photo-frame">
+                <div class="photo-placeholder">
+                    <div class="photo-placeholder-icon">📷</div>
+                    <p>메인 사진이<br>들어갈 자리입니다</p>
+                </div>
+                <!-- <img src="photos/main.jpg" alt="웨딩 사진"> -->
+            </div>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section fade-in">
+            <p class="quote-text">
+                서로 다른 두 사람이 만나<br>
+                하나의 사랑으로 피어납니다.<br><br>
+                저희 두 사람이 사랑의 결실을 맺게 되었습니다.<br>
+                귀한 걸음 하시어 축복해 주시면<br>
+                더없는 기쁨으로 간직하겠습니다.
+            </p>
+            <div class="quote-divider"></div>
+        </section>
+
+        <!-- Couple Info -->
+        <section class="couple-section fade-in">
+            <p class="section-title">GROOM & BRIDE</p>
+            <div class="couple-info">
+                <div class="person">
+                    <p class="person-role">신랑</p>
+                    <p class="person-name">김창현</p>
+                    <p class="person-name-en">David Kim</p>
+                </div>
+                <span class="couple-and">&</span>
+                <div class="person">
+                    <p class="person-role">신부</p>
+                    <p class="person-name">김나영</p>
+                    <p class="person-name-en">Nguyen Thi Thuy Ngan</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendar -->
+        <section class="calendar-section fade-in">
+            <p class="section-title">WEDDING DAY</p>
+            <p class="wedding-date">2026년 4월</p>
+            <p class="wedding-date-main">26</p>
+            <p class="wedding-time">일요일 오전 11시</p>
+
+            <div class="calendar">
+                <div class="calendar-header">
+                    <span>일</span>
+                    <span>월</span>
+                    <span>화</span>
+                    <span>수</span>
+                    <span>목</span>
+                    <span>금</span>
+                    <span>토</span>
+                </div>
+                <div class="calendar-body">
+                    <!-- April 2026: 수요일 시작 -->
+                    <span class="calendar-day empty"></span>
+                    <span class="calendar-day empty"></span>
+                    <span class="calendar-day empty"></span>
+                    <span class="calendar-day">1</span>
+                    <span class="calendar-day">2</span>
+                    <span class="calendar-day">3</span>
+                    <span class="calendar-day saturday">4</span>
+                    <span class="calendar-day sunday">5</span>
+                    <span class="calendar-day">6</span>
+                    <span class="calendar-day">7</span>
+                    <span class="calendar-day">8</span>
+                    <span class="calendar-day">9</span>
+                    <span class="calendar-day">10</span>
+                    <span class="calendar-day saturday">11</span>
+                    <span class="calendar-day sunday">12</span>
+                    <span class="calendar-day">13</span>
+                    <span class="calendar-day">14</span>
+                    <span class="calendar-day">15</span>
+                    <span class="calendar-day">16</span>
+                    <span class="calendar-day">17</span>
+                    <span class="calendar-day saturday">18</span>
+                    <span class="calendar-day sunday">19</span>
+                    <span class="calendar-day">20</span>
+                    <span class="calendar-day">21</span>
+                    <span class="calendar-day">22</span>
+                    <span class="calendar-day">23</span>
+                    <span class="calendar-day">24</span>
+                    <span class="calendar-day saturday">25</span>
+                    <span class="calendar-day sunday wedding-day">26</span>
+                    <span class="calendar-day">27</span>
+                    <span class="calendar-day">28</span>
+                    <span class="calendar-day">29</span>
+                    <span class="calendar-day">30</span>
+                </div>
+            </div>
+
+            <div class="dday-counter">
+                <p class="dday-text">결혼식까지</p>
+                <p class="dday-number" id="dday">D-00</p>
+            </div>
+        </section>
+
+        <!-- Location -->
+        <section class="location-section fade-in">
+            <p class="section-title">LOCATION</p>
+            <p class="location-name">New Oriental Danang Hotel</p>
+            <p class="location-floor">5층 연회장</p>
+            <p class="location-address">
+                20 Đống Đa, Thạch Thang, Hải Châu,<br>
+                Đà Nẵng 550000, Vietnam
+            </p>
+
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.0158635283!2d108.2184!3d16.0678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219c7b9b5b5b5%3A0x5b5b5b5b5b5b5b5b!2sNew%20Oriental%20Hotel%20Danang!5e0!3m2!1sen!2s!4v1234567890"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            <div class="location-buttons">
+                <a href="https://www.google.com/maps/search/?api=1&query=New+Oriental+Hotel+Danang" target="_blank" class="location-btn">
+                    📍 구글 지도
+                </a>
+                <a href="https://map.naver.com/v5/search/New%20Oriental%20Hotel%20Danang" target="_blank" class="location-btn">
+                    🗺️ 네이버 지도
+                </a>
+            </div>
+        </section>
+
+        <!-- Account -->
+        <section class="account-section fade-in">
+            <p class="section-title">GIFT</p>
+            <p class="account-message">
+                참석이 어려우신 분들을 위해<br>
+                계좌번호를 안내드립니다.<br>
+                전해주시는 진심은 소중히 간직하여<br>
+                좋은 부부의 밑거름으로 삼겠습니다.
+            </p>
+
+            <div class="account-tabs">
+                <button class="account-tab active" onclick="showAccount('groom')">신랑측</button>
+                <button class="account-tab" onclick="showAccount('bride')">신부측</button>
+            </div>
+
+            <div id="groom-account" class="account-content active">
+                <div class="account-item">
+                    <p class="account-name">신랑 김창현</p>
+                    <p class="account-number">계좌정보 추가 예정</p>
+                    <button class="copy-btn" onclick="copyAccount('계좌번호')">복사하기</button>
+                </div>
+            </div>
+
+            <div id="bride-account" class="account-content">
+                <div class="account-item">
+                    <p class="account-name">신부 김나영</p>
+                    <p class="account-number">계좌정보 추가 예정</p>
+                    <button class="copy-btn" onclick="copyAccount('계좌번호')">복사하기</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="gallery-section fade-in">
+            <p class="section-title">GALLERY</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">사진 1</div>
+                <div class="gallery-item">사진 2</div>
+                <div class="gallery-item">사진 3</div>
+                <div class="gallery-item">사진 4</div>
+                <div class="gallery-item">사진 5</div>
+                <div class="gallery-item">사진 6</div>
+            </div>
+        </section>
+
+        <!-- Share -->
+        <section class="share-section fade-in">
+            <p class="section-title">SHARE</p>
+            <p style="font-size: 14px; color: var(--text-medium);">청첩장을 공유해보세요</p>
+            <div class="share-buttons">
+                <button class="share-btn kakao" onclick="shareKakao()">
+                    💬
+                </button>
+                <button class="share-btn link" onclick="copyLink()">
+                    🔗
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-names">CHANGHYUN & NAYOUNG</p>
+            <p class="footer-date">2026. 04. 26</p>
+        </footer>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // D-Day Counter
+        function updateDday() {
+            const wedding = new Date('2026-04-26T11:00:00');
+            const today = new Date();
+            const diff = wedding - today;
+            const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+            const ddayEl = document.getElementById('dday');
+            if (days > 0) {
+                ddayEl.textContent = `D-${days}`;
+            } else if (days === 0) {
+                ddayEl.textContent = 'D-Day';
+            } else {
+                ddayEl.textContent = `D+${Math.abs(days)}`;
+            }
+        }
+        updateDday();
+
+        // Account Tab
+        function showAccount(type) {
+            document.querySelectorAll('.account-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.account-content').forEach(content => content.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById(`${type}-account`).classList.add('active');
+        }
+
+        // Copy Account
+        function copyAccount(account) {
+            navigator.clipboard.writeText(account).then(() => {
+                showToast('계좌번호가 복사되었습니다');
+            });
+        }
+
+        // Copy Link
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast('링크가 복사되었습니다');
+            });
+        }
+
+        // Toast Message
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Kakao Share (카카오 개발자 키 필요)
+        function shareKakao() {
+            // Kakao.init('YOUR_KAKAO_APP_KEY');
+            // Kakao.Share.sendDefault({...});
+            showToast('카카오 공유 기능 준비중');
+        }
+
+        // Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

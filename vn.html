@@ -639,7 +639,7 @@
 
         <!-- Main Photo -->
         <section class="main-photo fade-in">
-            <div class="photo-frame">
+            <div class="photo-frame" onclick="openMainPhoto()" style="cursor: pointer;">
                 <img src="THA_0824+.jpg" alt="Ảnh cưới">
             </div>
         </section>
@@ -893,9 +893,24 @@
             'THA_9926.jpg'
         ];
         let currentIndex = 0;
+        let isMainPhoto = false;
+
+        function openMainPhoto() {
+            isMainPhoto = true;
+            document.getElementById('lightbox-img').src = 'THA_0824+.jpg';
+            document.getElementById('lightbox-counter').style.display = 'none';
+            document.querySelector('.lightbox-prev').style.display = 'none';
+            document.querySelector('.lightbox-next').style.display = 'none';
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
         function openLightbox(index) {
+            isMainPhoto = false;
             currentIndex = index;
+            document.getElementById('lightbox-counter').style.display = 'block';
+            document.querySelector('.lightbox-prev').style.display = 'flex';
+            document.querySelector('.lightbox-next').style.display = 'flex';
             updateLightbox();
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';

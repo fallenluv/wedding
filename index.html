@@ -99,7 +99,6 @@
 
         .photo-frame {
             width: 100%;
-            aspect-ratio: 3/4;
             background: var(--wood-light);
             border: 8px solid var(--wood-cream);
             display: flex;
@@ -113,8 +112,8 @@
 
         .photo-frame img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
         }
 
         .photo-placeholder {
@@ -488,6 +487,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
         }
 
         /* Share Section */
@@ -591,17 +591,13 @@
         <header class="header fade-in">
             <p class="header-subtitle">WEDDING INVITATION</p>
             <h1 class="header-title">창현 ♥ 나영</h1>
-            <p class="header-names-en">David Kim & Nguyen Thi Thuy Ngan</p>
+            <p class="header-names-en">Kim Chang Hyun & Nguyen Thi Thuy Ngan</p>
         </header>
 
         <!-- Main Photo -->
         <section class="main-photo fade-in">
             <div class="photo-frame">
-                <div class="photo-placeholder">
-                    <div class="photo-placeholder-icon">📷</div>
-                    <p>메인 사진이<br>들어갈 자리입니다</p>
-                </div>
-                <!-- <img src="photos/main.jpg" alt="웨딩 사진"> -->
+                <img src="THA_0824+.jpg" alt="웨딩 사진">
             </div>
         </section>
 
@@ -624,7 +620,7 @@
                 <div class="person">
                     <p class="person-role">신랑</p>
                     <p class="person-name">김창현</p>
-                    <p class="person-name-en">David Kim</p>
+                    <p class="person-name-en">Kim Chang Hyun</p>
                 </div>
                 <span class="couple-and">&</span>
                 <div class="person">
@@ -734,22 +730,9 @@
                 좋은 부부의 밑거름으로 삼겠습니다.
             </p>
 
-            <div class="account-tabs">
-                <button class="account-tab active" onclick="showAccount('groom')">신랑측</button>
-                <button class="account-tab" onclick="showAccount('bride')">신부측</button>
-            </div>
-
             <div id="groom-account" class="account-content active">
                 <div class="account-item">
                     <p class="account-name">신랑 김창현</p>
-                    <p class="account-number">계좌정보 추가 예정</p>
-                    <button class="copy-btn" onclick="copyAccount('계좌번호')">복사하기</button>
-                </div>
-            </div>
-
-            <div id="bride-account" class="account-content">
-                <div class="account-item">
-                    <p class="account-name">신부 김나영</p>
                     <p class="account-number">계좌정보 추가 예정</p>
                     <button class="copy-btn" onclick="copyAccount('계좌번호')">복사하기</button>
                 </div>
@@ -760,12 +743,12 @@
         <section class="gallery-section fade-in">
             <p class="section-title">GALLERY</p>
             <div class="gallery-grid">
-                <div class="gallery-item">사진 1</div>
-                <div class="gallery-item">사진 2</div>
-                <div class="gallery-item">사진 3</div>
-                <div class="gallery-item">사진 4</div>
-                <div class="gallery-item">사진 5</div>
-                <div class="gallery-item">사진 6</div>
+                <div class="gallery-item"><img src="THA_0023.jpg" alt="갤러리 1"></div>
+                <div class="gallery-item"><img src="THA_0206.jpg" alt="갤러리 2"></div>
+                <div class="gallery-item"><img src="THA_0215.jpg" alt="갤러리 3"></div>
+                <div class="gallery-item"><img src="THA_0629.jpg" alt="갤러리 4"></div>
+                <div class="gallery-item"><img src="THA_9664.jpg" alt="갤러리 5"></div>
+                <div class="gallery-item"><img src="THA_9926.jpg" alt="갤러리 6"></div>
             </div>
         </section>
 
